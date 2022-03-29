@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// TODO: API 追加
-Route::get('/', function () {
-    return view('greeting', ['name' => 'James']);
+Route::get('/hello/{message?}', function ($message) {
+    // return $request->user();
+    return 'Hello ' . $message . '!!!';
 });
-// Route::get('/users', function () {
-//     return $request->user();
-// });
