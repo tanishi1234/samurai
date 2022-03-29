@@ -1,0 +1,28 @@
+version: '3'
+
+volumes:
+  mysql-volume:
+
+services:
+  web:
+    image: nginx 
+    container_name: web
+    ports:
+      - 80:80 
+    volumes:
+      - ./vue:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    working_dir: /var/www
+
+  vue:
+    build: ./docker/vue
+    container_name: vue
+    volumes:
+      - ./vue:/app
+    tty: true
+
+  api:
+    container_name: api  
+    build: ./docker/api
+    volumes:
+      - ./api:/var/www/api
