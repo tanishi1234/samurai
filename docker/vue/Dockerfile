@@ -1,5 +1,5 @@
-FROM node:16-alpine
+FROM node:16-slim
 
-WORKDIR /app
-
-RUN apk update
+RUN apt-get update \
+    && apt-get -y upgrade \
+    && apt-get -y install sudo

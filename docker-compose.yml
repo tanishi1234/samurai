@@ -7,6 +7,9 @@ services:
   web:
     image: nginx 
     container_name: web
+    depends_on:
+      - vue
+      - api
     ports:
       - 80:80 
     volumes:
@@ -20,6 +23,7 @@ services:
     volumes:
       - ./vue:/app
     tty: true
+    working_dir: /app
 
   api:
     container_name: api  
