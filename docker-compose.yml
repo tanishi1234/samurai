@@ -21,9 +21,9 @@ services:
     build: ./docker/vue
     container_name: vue
     volumes:
-      - ./vue:/app
+      - ./vue:/app/vue
     tty: true
-    working_dir: /app
+    working_dir: /app/vue
 
   api:
     container_name: api  
