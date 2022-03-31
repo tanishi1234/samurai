@@ -5,11 +5,12 @@ volumes:
 
 services:
   web:
-    image: nginx 
+    image: nginx:latest 
     container_name: web
     depends_on:
       - vue
       - api
+    tty: true
     ports:
       - 80:80 
     volumes:
