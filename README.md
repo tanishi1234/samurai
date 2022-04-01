@@ -11,9 +11,9 @@ $ docker-compose up -d --build
 
 ### vue
 ```bash
-$ docker-compose exec vue sh
-$ npm ci
-$ npm run build
+$ docker-compose exec vue bash
+$ yarn install
+$ yarn build
 $ exit
 ```
 
