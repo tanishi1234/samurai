@@ -28,8 +28,10 @@ $ exit
 
 #### Linux 環境の場合、下記も実行
 ```bash
+$ docker-compose exec api bash
 $ chmod 777 storage/logs/
 $ chmod 777 storage/framework/cache/
 $ chmod 777 storage/framework/sessions/
 $ chmod 777 storage/framework/views/
+$ exit
 ```
