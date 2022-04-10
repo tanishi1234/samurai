@@ -33,3 +33,15 @@ $ chmod 777 storage/framework/cache/
 $ chmod 777 storage/framework/sessions/
 $ chmod 777 storage/framework/views/
 ```
+
+### db
+```bash
+$ docker-compose exec api bash
+$ php artisan migrate
+$ exit
+```
+
+#### テストデータを投入するとき
+```bash
+$ php artisan migrate:refresh --seed
+```

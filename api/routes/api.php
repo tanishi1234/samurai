@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ Route::get('/hello/{message?}', function ($message) {
     // return $request->user();
     return 'Hello ' . $message . '!!!';
 });
+
+Route::get('/users', [UserController::class, 'index']);
