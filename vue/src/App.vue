@@ -8,9 +8,16 @@ axios.get('/api/hello/laravelworld').then(res => {
   message.value = res.data;
 })
 
+interface UserModel {
+  id: number;
+  name: string;
+  email: string;
+}
 const userId = ref("1");
-const user = ref({});
-const getUser = (id) => {
+const user = ref<UserModel>({
+  id: 0, name: "", email: "",
+});
+const getUser = (id: String|number) => {
   if(id) {
     axios.post('/api/graphql', {
       query: `{
@@ -21,8 +28,7 @@ const getUser = (id) => {
         }
       }`,
     }).then(res => {
-      console.log(res.data)
-      user.value = res.data.data.user ?? {};
+      user.value = res.data.data.user ?? { id: 0, name: "", email: "" };
     })
   }
 }
@@ -40,7 +46,7 @@ watch(userId, (id) => {
     <div style="padding-top: 1rem;">
       <div><label>user id:</label><input type="text" v-model="userId" /></div>
       <div style="border: solid 1px; margin: 1rem; padding: 1rem; text-align: center;">
-        <div v-if="user && user.id">
+        <div v-if="user.id">
           <p>{{ user.name }}</p>
           <p>{{ user.email }}</p>
         </div>
