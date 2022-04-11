@@ -41,7 +41,15 @@ $ php artisan migrate
 $ exit
 ```
 
-#### テストデータを投入するとき
+#### テストデータを投入
 ```bash
 $ php artisan migrate:refresh --seed
 ```
+
+### GraphQL
+#### API
+http://localhost/api/graphql
+
+#### PlayGround
+http://localhost/api/graphql-playground
+
