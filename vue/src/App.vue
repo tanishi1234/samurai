@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
+import RefSample from './components/RefSample.vue';
 import axios from 'axios';
 
 const message = ref("");
@@ -36,6 +37,13 @@ getUser(1);
 watch(userId, (id) => {
   getUser(id);
 })
+
+const refSample = ref<InstanceType<typeof RefSample>>();
+onMounted(() => {
+  if(!refSample.value) return;
+  console.log(JSON.stringify(refSample.value))
+  console.log(refSample.value?.counter())
+})
 </script>
 
 <template>
@@ -53,6 +61,8 @@ watch(userId, (id) => {
         <div v-else>Not Found</div>
       </div>
     </div>
+    <ref-sample ref="refSample"></ref-sample>
+    <button @click="refSample?.counter">count</button>
   </div>
 </template>
 
