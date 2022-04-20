@@ -10,6 +10,8 @@
       <router-link to="/">Home</router-link>
       <router-link to="/api-sample">ApiSample</router-link>
       <router-link to="/ref-sample">RefSample</router-link>
+      <router-link to="/v-if-sample">VIfSample</router-link>
+      <router-link to="/slot-scope-sample">SlotScopeSample</router-link>
     </p>
     
     <router-view></router-view>

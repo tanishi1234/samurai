@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue';
 import RefSampleChild from '../organisms/RefSampleChild.vue'
 
-
 const child = ref<InstanceType<typeof RefSampleChild>>();
 onMounted(() => {
   if(!child.value) return;
