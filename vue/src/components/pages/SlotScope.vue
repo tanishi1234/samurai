@@ -8,6 +8,7 @@ import SlotScopeTemplate from '../templates/SlotScopeTemplate.vue'
 
 <template>
   <slot-scope-template>
+    <template #title>SlotScope のサンプル</template>
     <template #default="{ text }">
       <div>
         <p>子コンポーネントで入力された情報を出力します</p>

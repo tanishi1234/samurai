@@ -6,7 +6,7 @@ const text = ref("");
 
 <template>
   <div>
-    <h1>SlotScope のサンプル</h1>
+    <h1><slot name="title">タイトル</slot></h1>
     <div>
       <label>テキストを入力してください : </label>
       <input type="text" v-model="text" />
