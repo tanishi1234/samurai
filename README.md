@@ -36,6 +36,18 @@ $ chmod 777 storage/framework/views/
 $ exit
 ```
 
+### db
+```bash
+$ docker-compose exec api bash
+$ php artisan migrate
+$ exit
+```
+
+#### テストデータを投入するとき
+```bash
+$ php artisan migrate:fresh --seed
+```
+
 
 # Heroku デプロイ
 
@@ -55,18 +67,34 @@ $ heroku buildpacks:add -a <app-name>-api https://github.com/lstoll/heroku-build
 $ heroku buildpacks:add -a <app-name>-api heroku/php
 $ heroku config:set -a <app-name>-api PROCFILE=api/Procfile
 $ heroku config:set -a <app-name>-api APP_BASE=api
-$ git push https://git.heroku.com/serene-island-03021.git HEAD:main
+$ git push https://git.heroku.com/<app-name>.git HEAD:main
 $ git push https://git.heroku.com/<app-name>-api.git HEAD:main
 ```
 
-### db
+## Heroku で MySQL を使用
+### アドオン追加
 ```bash
-$ docker-compose exec api bash
-$ php artisan migrate
-$ exit
+$ heroku addons:add cleardb -a <app-name>-api
 ```
 
-#### テストデータを投入するとき
+### MySQL の URL を取得
 ```bash
-$ php artisan migrate:refresh --seed
+heroku config -a <app-name>-api | grep CLEARDB_DATABASE_URL
+```
+
+上記で取得できた URL のフォーマットから情報をメモしておく
+CLEARDB_DATABASE_URL: mysql://[ユーザー名]:[パスワード]@[ホスト名]/[データベース名]?reconnect=true
+
+
+### 環境変数を追加
+```bash
+$ heroku config:set -a <app-name>-api DB_DATABASE=<データベース名>
+$ heroku config:set -a <app-name>-api DB_HOST=<ホスト名>
+$ heroku config:set -a <app-name>-api DB_USERNAME=<ユーザー名>
+$ heroku config:set -a <app-name>-api DB_PASSWORD=<パスワード>
+```
+
+### マイグレーション
+```bash
+$ heroku run -a <app-name>-api php artisan migrate:fresh --seed
 ```
