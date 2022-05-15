@@ -9,11 +9,11 @@ const About = { template: '<div>About</div>' }
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
-  { path: '/', component: Home },
-  { path: '/ref-sample', component: import('../components/pages/RefSample.vue') },
-  { path: '/api-sample', component: import('../components/pages/ApiSample.vue') },
-  { path: '/v-if-sample', component: import('../components/pages/MyVIf.vue') },
-  { path: '/slot-scope-sample', component: import('../components/pages/SlotScope.vue') },
+  { path: '/', component: () => import('../components/pages/HomePage.vue') }, 
+  { path: '/ref-sample', component: () => import('../components/pages/RefSample.vue') },
+  { path: '/api-sample', component: () => import('../components/pages/ApiSample.vue') },
+  { path: '/v-if-sample', component: () => import('../components/pages/MyVIf.vue') },
+  { path: '/slot-scope-sample', component: () => import('../components/pages/SlotScope.vue') },
 ]
 
 // 3. Create the router instance and pass the `routes` option
