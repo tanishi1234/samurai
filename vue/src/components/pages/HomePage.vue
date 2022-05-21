@@ -20,11 +20,11 @@ console.log('slide change');
 
 </script>
 <template>
-    <div>
+    <div> 
         <default-template>
             ボディ
-        </default-template>    
-        <swiper class="mySlideBar"
+        </default-template>  
+        <swiper class="my-slide-bar"
             :spaceBetween="30"
             :effect="'fade'"
             :navigation="true"
@@ -32,32 +32,32 @@ console.log('slide change');
             clickable: true,
             }"
             loop
-            
+            :autoplay="{
+                delay: 2500,
+                disableOnInteraction: false,
+            }"
             :modules="modules"
         >
-            <swiper-slide class="mySlide"
+            <swiper-slide class="my-slide"
                 ><img class="slide-image"
-                    src="https://swiperjs.com/demos/images/nature-1.jpg" /></swiper-slide
-            ><swiper-slide class="mySlide"
+                    src="../../assets/img/050mushi2054_TP_V.jpg"/></swiper-slide
+            ><swiper-slide class="my-slide"
                 ><img class="slide-image"
-                    src="https://swiperjs.com/demos/images/nature-2.jpg" /></swiper-slide
-            ><swiper-slide class="mySlide"
+                    src="../../assets/img/Redsugar20207053_TP_V.jpg" /></swiper-slide
+            ><swiper-slide class="my-slide"
                 ><img class="slide-image"
-                    src="https://swiperjs.com/demos/images/nature-3.jpg" /></swiper-slide
-            ><swiper-slide class="mySlide"
-                ><img class="slide-image" 
-                    src="https://swiperjs.com/demos/images/nature-4.jpg"
-            /></swiper-slide>
+                    src="../../assets/img/shikun5V7A8736217_TP_V.jpg" /></swiper-slide
+            >
         </swiper>
-  </div>
+    </div>
 </template>
 
 <style scoped>
     .slide-image {
-        max-height: 100px;
+        max-height: 400px;
     }
 
-    .mySlideBar::v-deep(.mySlide) {
+    .my-slide-bar::v-deep(.my-slide) {
         @apply flex justify-center bg-black;
     }
 </style>
